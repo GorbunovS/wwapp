@@ -10,7 +10,7 @@ const DefaultIcon = L.icon({
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shadowSize: [41, 41]
+  shadowSize: [41, 41],
 })
 L.Marker.prototype.options.icon = DefaultIcon
 
@@ -28,31 +28,25 @@ const RussiaMap: FC = () => {
       id: 1,
       name: 'Москва',
       position: [55.7558, 37.6173],
-      description: 'Столица России'
+      description: 'Столица России',
     },
     {
       id: 2,
       name: 'Санкт-Петербург',
       position: [59.9343, 30.3351],
-      description: 'Северная столица'
+      description: 'Северная столица',
     },
-   
   ]
 
   return (
-   
     <div style={{ height: '100vh', width: '100%', position: 'relative' }}>
-      <MapContainer
-        center={center}
-        zoom={5}
-        style={{ height: '100%', width: '100%' }}
-      >
+      <MapContainer center={center} zoom={5} style={{ height: '100%', width: '100%' }}>
         <TileLayer
           url="https://tile.udev.su/styles/basemap/512/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
-        
-        {markers.map(marker => (
+
+        {markers.map((marker) => (
           <Marker key={marker.id} position={marker.position}>
             <Popup>
               <h3>{marker.name}</h3>

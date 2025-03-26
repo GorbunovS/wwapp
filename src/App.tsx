@@ -1,6 +1,5 @@
-import Header from '../src/Header';
-import { Outlet } from 'react-router-dom';
-import MapLayer from '../src/MapLayer';
+import Header from '../src/Header'
+import MapLayer from '../src/MapLayer'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -15,4 +14,4 @@ function App() {
   )
 }
 
-export default App;
+export default App
