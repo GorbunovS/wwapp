@@ -2,6 +2,7 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import L from 'leaflet'
 import { FC } from 'react'
+import CardComponent from './CapitalCard' // Переименовал импорт, чтобы избежать конфликта имен
 
 const DefaultIcon = L.icon({
   iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
@@ -14,43 +15,44 @@ const DefaultIcon = L.icon({
 })
 L.Marker.prototype.options.icon = DefaultIcon
 
-interface CityMarker {
-  id: number
-  name: string
-  position: [number, number]
-  description: string
-}
-
-const RussiaMap: FC = () => {
+const map: FC = () => {
   const center: [number, number] = [55.751244, 37.618423]
-  const markers: CityMarker[] = [
+  const cards: Card[] = [
     {
       id: 1,
       name: 'Москва',
       position: [55.7558, 37.6173],
       description: 'Столица России',
+      temperature: '+15°C',
+      image: 'sunny.jpg',
     },
     {
       id: 2,
       name: 'Санкт-Петербург',
       position: [59.9343, 30.3351],
       description: 'Северная столица',
+      temperature: '+12°C',
+      image: 'sunny.jpg',
     },
   ]
 
   return (
     <div style={{ height: '100vh', width: '100%', position: 'relative' }}>
-      <MapContainer center={center} zoom={5} style={{ height: '100%', width: '100%' }}>
+      <MapContainer center={center} zoom={6} style={{ height: '100%', width: '100%' }}>
         <TileLayer
-          url="https://tile.udev.su/styles/basemap/512/{z}/{x}/{y}.png"
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
 
-        {markers.map((marker) => (
-          <Marker key={marker.id} position={marker.position}>
+        {cards.map((card) => (
+          <Marker key={card.id} position={card.position}>
             <Popup>
-              <h3>{marker.name}</h3>
-              <p>{marker.description}</p>
+              <CardComponent
+                name={card.name}
+                description={card.description}
+                temperature={card.temperature || ''}
+                image={card.image || ''}
+              />
             </Popup>
           </Marker>
         ))}
@@ -59,4 +61,4 @@ const RussiaMap: FC = () => {
   )
 }
 
-export default RussiaMap
+export default map

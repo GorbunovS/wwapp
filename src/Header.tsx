@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { Link } from 'react-router-dom'
 import '../src/styles/Header.css'
-import { Button } from "@/components/ui/button"
 
 const Header: FC = () => {
   return (
@@ -25,10 +24,7 @@ const Header: FC = () => {
         </nav>
 
         {}
-        <div className="auth-buttons">
-        <Button variant="default">Кнопка</Button>
-          <button className="register-btn">Регистрация</button>
-        </div>
+        <div className="auth-buttons">{/* Тут сделаю кнопки авторизации (возможно) */}</div>
       </div>
     </header>
   )
