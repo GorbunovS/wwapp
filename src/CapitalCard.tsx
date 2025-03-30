@@ -3,7 +3,6 @@ import '../src/styles/Card.css'
 import { getWeatherCondition, getWeatherImage } from '../src/scripts/weather'
 
 interface CardProps {
-  coordinate: [number, number]
   name: string
   description: string
   temperature: string
@@ -37,3 +36,8 @@ const Card: FC<CardProps> = ({ name, image, description, temperature }) => {
 }
 
 export default Card
+
+    );
+};
+
+export default Card;
