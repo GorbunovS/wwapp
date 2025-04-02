@@ -1,5 +1,4 @@
 import { FC } from 'react'
-import '../src/styles/Card.css'
 import { getWeatherCondition, getWeatherImage } from '../src/scripts/weather'
 
 interface CardProps {
@@ -16,7 +15,7 @@ const Card: FC<CardProps> = ({ name, image, description, temperature }) => {
   return (
     <div className="card">
       <div
-        className="header"
+        className="card-header"
         style={{
           backgroundImage: `url(${backgroundImage})`,
           backgroundSize: 'cover',
@@ -29,15 +28,10 @@ const Card: FC<CardProps> = ({ name, image, description, temperature }) => {
       </div>
       <div className="weather-info">
         <p className="temperature">{temperature}</p>
-        <p className="weather-condition">{weatherCondition}</p>
+        <p className="weather-condition">{getWeatherCondition(description)}</p>
       </div>
     </div>
   )
 }
 
 export default Card
-
-    );
-};
-
-export default Card;
