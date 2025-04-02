@@ -1,10 +1,16 @@
+import sunnyImage from '../assets/marks/sunny.png'
+import rainyImage from '../assets/marks/rainy.png'
+import cloudyImage from '../assets/marks/cloudy.png'
+import snowyImage from '../assets/marks/snowy.png'
+import foggyImage from '../assets/marks/foggy.png'
+import thunderstormImage from '../assets/marks/thunderstorm.png'
 
-import sunnyImage from '../assets/marks/sunny.png';
-import rainyImage from '../assets/marks/rainy.png';
-import cloudyImage from '../assets/marks/cloudy.png';
-import snowyImage from '../assets/marks/snowy.png';
-import foggyImage from '../assets/marks/foggy.png';
-import thunderstormImage from '../assets/marks/thunderstorm.png';
+import sunnyImageCover from '../assets/weather/sunny.png'
+import rainyImageCover from '../assets/weather/rainy.png'
+import cloudyImageCover from '../assets/weather/cloudy.png'
+import snowyImageCover from '../assets/weather/snowy.png'
+import foggyImageCover from '../assets/weather/foggy.png'
+import thunderstormImageCover from '../assets/weather/thunderstorm.png'
 
 export type WeatherCondition =
   | 'sunny'
@@ -13,7 +19,7 @@ export type WeatherCondition =
   | 'snowy'
   | 'foggy'
   | 'thunderstorm'
-  | 'default';
+  | 'default'
 
 const weatherDescriptions: Record<string, WeatherCondition> = {
   sunny: 'sunny',
@@ -28,22 +34,22 @@ const weatherDescriptions: Record<string, WeatherCondition> = {
   туман: 'foggy',
   thunder: 'thunderstorm',
   гроза: 'thunderstorm',
-};
+}
 
 export const getWeatherCondition = (description: string): WeatherCondition => {
-  const desc = description.toLowerCase();
+  const desc = description.toLowerCase()
 
   for (const [key, value] of Object.entries(weatherDescriptions)) {
     if (desc.includes(key)) {
-      return value;
+      return value
     }
   }
 
-  return 'default';
-};
+  return 'default'
+}
 
 export const getMarkStyleURL = (description: string): string => {
-  const condition = getWeatherCondition(description);
+  const condition = getWeatherCondition(description)
 
   const imageMap: Record<WeatherCondition, string> = {
     sunny: sunnyImage,
@@ -52,25 +58,36 @@ export const getMarkStyleURL = (description: string): string => {
     snowy: snowyImage,
     foggy: foggyImage,
     thunderstorm: thunderstormImage,
- 
-  };
-  
+  }
 
-  return imageMap[condition] || imageMap.default;
-};
+  return imageMap[condition] || imageMap.default
+}
 
 export const getWeatherImage = (description: string): string => {
-  const condition = getWeatherCondition(description);
+  const condition = getWeatherCondition(description)
 
   const imageMap: Record<WeatherCondition, string> = {
-    sunny: '/assets/weather/sunny.png',
-    rainy: '/assets/weather/rainy.png',
-    cloudy: '/assets/weather/cloudy.png',
-    snowy: '/assets/weather/snowy.png',
-    foggy: '/assets/weather/foggy.png',
-    thunderstorm: '/assets/weather/thunderstorm.png',
-    default: '/assets/weather/default.png',
-  };
+    sunny: sunnyImageCover,
+    rainy: rainyImageCover,
+    cloudy: cloudyImageCover,
+    snowy: snowyImage,
+    foggy: foggyImage,
+    thunderstorm: thunderstormImage,
+  }
 
-  return imageMap[condition] || imageMap.default;
-};
+  return imageMap[condition] || imageMap.default
+}
+
+export const interpretWeatherDescription = (condition: WeatherCondition): string => {
+  const descriptionMap: Record<WeatherCondition, string> = {
+    sunny: 'Солнечно',
+    rainy: 'Дождливо',
+    cloudy: 'Облачно',
+    snowy: 'Снежно',
+    foggy: 'Туманно',
+    thunderstorm: 'Гроза',
+    default: 'Неизвестно',
+  }
+
+  return descriptionMap[condition] || descriptionMap.default
+}

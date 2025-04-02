@@ -5,7 +5,14 @@ import { FC } from 'react'
 import CardComponent from './CapitalCard'
 import { getMarkStyleURL } from './scripts/weather'
 
-type WeatherCondition = 'sunny' | 'rainy' | 'cloudy' | 'snowy' | 'foggy' | 'thunderstorm' | 'default'
+type WeatherCondition =
+  | 'sunny'
+  | 'rainy'
+  | 'cloudy'
+  | 'snowy'
+  | 'foggy'
+  | 'thunderstorm'
+  | 'default'
 
 const center: [number, number] = [55.751244, 37.618423]
 
@@ -14,7 +21,7 @@ const cards = [
     id: 1,
     name: 'Москва',
     position: [55.7558, 37.6173] as [number, number],
-    description: 'sunny', 
+    description: 'sunny',
     temperature: '+15°C',
   },
   {
@@ -45,8 +52,16 @@ const MapComponent: FC = () => {
 
           return (
             <Marker key={card.id} position={card.position} icon={icon}>
-              <Popup>
-                <CardComponent name={card.name} description={card.description} temperature={card.temperature} />
+              <Popup
+              maxHeight={1000}
+              maxWidth={1000}
+              closeButton={false}
+              >
+                <CardComponent
+                  name={card.name}
+                  description={card.description}
+                  temperature={card.temperature}
+                />
               </Popup>
             </Marker>
           )
