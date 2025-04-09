@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "test": "echo \"No tests yet\" && exit 0",
-    "test:watch": "jest --watchAll",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll",
     "dev": "vite",
     "deploy": "gh-pages -d dist",
     "build": "tsc -b && vite build",
@@ -52,14 +52,5 @@
     "typescript-eslint": "^8.24.1",
     "vite": "^6.2.0",
     "vite-plugin-gh-pages": "^1.0.1"
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "transform": {
-      "^.+\\.(ts|tsx)$": "ts-jest"
-    },
-    "moduleNameMapper": {
-      "\\.(css|less)$": "identity-obj-proxy"
-    }
   }
 }
