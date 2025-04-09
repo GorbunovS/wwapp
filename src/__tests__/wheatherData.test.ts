@@ -1,9 +1,6 @@
-// Импортируем типы для тестирования
-// При запуске теста модуль будет использоваться как мок
-// так как реальный API вызывать не будем
+
 import '../scripts/wheatherData';
 
-// Используем типы напрямую вместо импорта модуля
 interface SimpleForecast {
   date: string;
   temp: number;
@@ -19,7 +16,7 @@ interface CityWeather {
   forecast: SimpleForecast[];
 }
 
-// Создаем моковый ответ для тестирования типов CityWeather
+// Мокаем развернутый респонс
 const mockCityWeather: CityWeather = {
   id: 1,
   name: 'Тестовый город',
@@ -35,7 +32,7 @@ const mockCityWeather: CityWeather = {
   ]
 };
 
-// Создаем моковый ответ для тестирования типов SimpleForecast
+// Мокаем просто респонс
 const mockForecast: SimpleForecast = {
   date: '10.04.2023',
   temp: 20,
@@ -44,17 +41,16 @@ const mockForecast: SimpleForecast = {
 
 describe('Weather Data Types', () => {
   
-  // Проверка типов CityWeather
+
   test('City weather object should match CityWeather interface', () => {
-    // Проверяем, что объект имеет все необходимые свойства
+
     expect(mockCityWeather).toHaveProperty('id');
     expect(mockCityWeather).toHaveProperty('name');
     expect(mockCityWeather).toHaveProperty('position');
     expect(mockCityWeather).toHaveProperty('currentTemp');
     expect(mockCityWeather).toHaveProperty('currentDesc');
     expect(mockCityWeather).toHaveProperty('forecast');
-    
-    // Проверяем типы свойств
+
     expect(typeof mockCityWeather.id).toBe('number');
     expect(typeof mockCityWeather.name).toBe('string');
     expect(Array.isArray(mockCityWeather.position)).toBe(true);
@@ -63,7 +59,7 @@ describe('Weather Data Types', () => {
     expect(Array.isArray(mockCityWeather.forecast)).toBe(true);
   });
   
-  // Проверка типов SimpleForecast
+
   test('Forecast item should match SimpleForecast interface', () => {
     expect(mockForecast).toHaveProperty('date');
     expect(mockForecast).toHaveProperty('temp');
@@ -74,7 +70,6 @@ describe('Weather Data Types', () => {
     expect(typeof mockForecast.description).toBe('string');
   });
   
-  // Проверка вложенного объекта forecast
   test('Forecast array in CityWeather should contain SimpleForecast items', () => {
     if (mockCityWeather.forecast.length > 0) {
       const forecastItem = mockCityWeather.forecast[0];
