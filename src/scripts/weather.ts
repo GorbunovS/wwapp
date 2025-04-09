@@ -20,7 +20,7 @@ export type WeatherCondition =
   | 'default'
 
 export const getWeatherCondition = (description: string): WeatherCondition => {
-  const desc = description.toLowerCase();
+  const desc = description.toLowerCase()
 
   if (desc.includes('ясно') || desc.includes('солнце') || desc.includes('чист')) {
     return 'sunny'
@@ -57,7 +57,7 @@ export const getMarkStyleURL = (description: string): string => {
     default: sunnyImage,
   }
 
-  return imageMap[condition] || imageMap.default;
+  return imageMap[condition] || imageMap.default
 }
 
 export const getWeatherImage = (description: string): string => {
@@ -69,5 +69,5 @@ export const getWeatherImage = (description: string): string => {
     cloudy: cloudyImageCover,
   }
 
-  return imageMap[condition] || defaultImageCover;
+  return imageMap[condition] || defaultImageCover
 }

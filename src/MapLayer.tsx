@@ -17,27 +17,25 @@ const DefaultIcon = L.icon({
   iconSize: [25, 41],
   iconAnchor: [12, 41],
   popupAnchor: [1, -34],
-  shadowSize: [41, 41]
-});
+  shadowSize: [41, 41],
+})
 
-L.Marker.prototype.options.icon = DefaultIcon;
+L.Marker.prototype.options.icon = DefaultIcon
 
 interface SimpleForecast {
-  date: string;
-  temp: number;
-  description: string;
+  date: string
+  temp: number
+  description: string
 }
 
 interface CityWeather {
-  id: number;
-  name: string;
-  position: [number, number];
-  currentTemp: string;
-  currentDesc: string;
-  forecast: SimpleForecast[];
+  id: number
+  name: string
+  position: [number, number]
+  currentTemp: string
+  currentDesc: string
+  forecast: SimpleForecast[]
 }
-
-type WeatherCondition = 'sunny' | 'rainy' | 'cloudy' | 'snowy' | 'foggy' | 'thunderstorm' | 'default'
 
 const center: [number, number] = [55.751244, 37.618423]
 
@@ -52,8 +50,8 @@ const MapComponent: FC = () => {
         setLoading(true)
         const data = await fetchSimpleWeatherForecast('f69f83d93f2bdce6419d2bf34b0f7934')
         setCards(data)
-      } catch (err) {
-        setError('Не удалось загрузить данные о погоде')
+      } catch {
+        setError('не удалось загрузить погоду')
       } finally {
         setLoading(false)
       }
@@ -74,8 +72,8 @@ const MapComponent: FC = () => {
         />
 
         {cards.map((card) => {
-          const iconUrl = getMarkStyleURL(card.currentDesc);
-          
+          const iconUrl = getMarkStyleURL(card.currentDesc)
+
           const icon = L.icon({
             iconUrl: iconUrl,
             iconSize: [60, 60],

@@ -7,19 +7,13 @@ const Header: FC = () => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo">
-          <img src="wwapp/src/assets/logo.svg" alt="Логотип" />
+          <img src="/src/assets/logo.svg" alt="Логотип" />
         </Link>
 
         <nav className="nav">
           <ul className="nav-list">
             <li>
-              <Link to="/">Главная</Link>
-            </li>
-            <li>
-              <Link to="/map">Карта</Link>
-            </li>
-            <li>
-              <Link to="/weather">Моя погода</Link>
+              <Link to="/">Погодная карта</Link>
             </li>
           </ul>
         </nav>

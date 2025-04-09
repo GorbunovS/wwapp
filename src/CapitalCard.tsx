@@ -1,5 +1,5 @@
 import { FC } from 'react'
-import { getWeatherCondition, getWeatherImage } from '../src/scripts/weather'
+import { getWeatherImage } from '../src/scripts/weather'
 
 interface CardProps {
   name: string
@@ -9,9 +9,8 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ name, image, description, temperature }) => {
-  const weatherCondition = getWeatherCondition(description)
   const backgroundImage = image || getWeatherImage(description)
-  
+
   return (
     <div
       className="card"
