@@ -7,7 +7,7 @@ const Header: FC = () => {
     <header className="header">
       <div className="header-container">
         <Link to="/" className="logo">
-          <img src="/src/assets/logo.svg" alt="Логотип" />
+          <img src="./src/assets/logo.svg" alt="Логотип" />
         </Link>
 
         <nav className="nav">

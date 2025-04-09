@@ -2,6 +2,7 @@
   "name": "wwapp",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://GorbunovS.github.io/wwapp",
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
