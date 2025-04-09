@@ -3,9 +3,7 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-  
 }
-
 
 body {
   font-family: 'PT Sans Caption', sans-serif;
@@ -31,12 +29,10 @@ body {
   padding: 10px !important; /* Отступы внутри попапа */
 }
 
-
 .card-header {
   padding: 2em;
   min-width: 300px;
   font-family: 'PT Sans Caption', sans-serif;
-
 }
 
 .read-the-docs {

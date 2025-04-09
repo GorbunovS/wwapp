@@ -6,12 +6,10 @@ const Header: FC = () => {
   return (
     <header className="header">
       <div className="header-container">
-        {}
         <Link to="/" className="logo">
           <img src="wwapp/src/assets/logo.svg" alt="Логотип" />
         </Link>
 
-        {}
         <nav className="nav">
           <ul className="nav-list">
             <li>
@@ -20,11 +18,13 @@ const Header: FC = () => {
             <li>
               <Link to="/map">Карта</Link>
             </li>
+            <li>
+              <Link to="/weather">Моя погода</Link>
+            </li>
           </ul>
         </nav>
 
-        {}
-        <div className="auth-buttons">{/* Тут сделаю кнопки авторизации (возможно) */}</div>
+        <div className="auth-buttons"></div>
       </div>
     </header>
   )
