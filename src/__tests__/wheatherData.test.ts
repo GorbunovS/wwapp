@@ -9,6 +9,7 @@ interface SimpleForecast {
 interface CityWeather {
   id: number
   name: string
+  nameEn: string
   position: [number, number]
   currentTemp: string
   currentDesc: string
@@ -19,6 +20,7 @@ interface CityWeather {
 const mockCityWeather: CityWeather = {
   id: 1,
   name: 'Тестовый город',
+  nameEn: 'test-city',
   position: [55.7558, 37.6173],
   currentTemp: '+20°C',
   currentDesc: 'ясно',
@@ -42,6 +44,7 @@ describe('Weather Data Types', () => {
   test('City weather object should match CityWeather interface', () => {
     expect(mockCityWeather).toHaveProperty('id')
     expect(mockCityWeather).toHaveProperty('name')
+    expect(mockCityWeather).toHaveProperty('nameEn')
     expect(mockCityWeather).toHaveProperty('position')
     expect(mockCityWeather).toHaveProperty('currentTemp')
     expect(mockCityWeather).toHaveProperty('currentDesc')
@@ -49,13 +52,14 @@ describe('Weather Data Types', () => {
 
     expect(typeof mockCityWeather.id).toBe('number')
     expect(typeof mockCityWeather.name).toBe('string')
+    expect(typeof mockCityWeather.nameEn).toBe('string')
     expect(Array.isArray(mockCityWeather.position)).toBe(true)
     expect(typeof mockCityWeather.currentTemp).toBe('string')
     expect(typeof mockCityWeather.currentDesc).toBe('string')
     expect(Array.isArray(mockCityWeather.forecast)).toBe(true)
   })
 
-  test('Forecast item should match SimpleForecast interface', () => {
+  test('Forecast object should match SimpleForecast interface', () => {
     expect(mockForecast).toHaveProperty('date')
     expect(mockForecast).toHaveProperty('temp')
     expect(mockForecast).toHaveProperty('description')

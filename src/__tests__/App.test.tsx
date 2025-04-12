@@ -1,20 +1,18 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import { vi } from 'vitest'
 import App from '../App'
 import Header from '../Header'
 import CityPageDetail from '../CityPageDetail'
 import { getWeatherCondition, getMarkStyleURL } from '../scripts/weather'
 import { getForecastData, fetchSimpleWeatherForecast } from '../scripts/wheatherData'
 import type { CityWeather } from '../scripts/wheatherData'
-import { MapLayer } from '../MapLayer'
 
-// Mock the MapLayer component
-vi.mock('../MapLayer', () => ({
-  MapLayer: vi.fn(() => null)
+// Mock
+jest.mock('../MapLayer', () => ({
+  MapLayer: jest.fn(() => null),
 }))
 
-// Mock weather data
+// Mock
 const mockWeatherData: CityWeather[] = [
   {
     id: 1,
@@ -27,29 +25,28 @@ const mockWeatherData: CityWeather[] = [
       {
         date: '01.01.2024',
         temp: 20,
-        description: 'Ясно'
-      }
-    ]
-  }
+        description: 'Ясно',
+      },
+    ],
+  },
 ]
 
-// Mock weather data functions
-vi.mock('../scripts/wheatherData', () => ({
-  getForecastData: vi.fn().mockResolvedValue([
+jest.mock('../scripts/wheatherData', () => ({
+  getForecastData: jest.fn().mockResolvedValue([
     {
       temp: 20,
       description: 'Ясно',
       time: '12:00',
-      date: '1 января'
-    }
+      date: '1 января',
+    },
   ]),
-  fetchSimpleWeatherForecast: vi.fn().mockResolvedValue(mockWeatherData)
+  fetchSimpleWeatherForecast: jest.fn().mockResolvedValue(mockWeatherData),
 }))
 
 const mockForecastData = [
   mockWeatherData,
   { ...mockWeatherData, time: '15:00' },
-  { ...mockWeatherData, time: '18:00' }
+  { ...mockWeatherData, time: '18:00' },
 ]
 
 describe('App Component', () => {
@@ -68,7 +65,7 @@ describe('App Component', () => {
         <App />
       </BrowserRouter>
     )
-    
+
     expect(screen.getByRole('heading')).toHaveTextContent('Weather Forecast')
   })
 })
@@ -170,8 +167,8 @@ describe('Weather API', () => {
         position: [55.7558, 37.6173],
         currentTemp: '+20°C',
         currentDesc: 'ясно',
-        forecast: mockForecastData
-      }
+        forecast: mockForecastData,
+      },
     ])
   })
 
@@ -186,4 +183,4 @@ describe('Weather API', () => {
     expect(Array.isArray(data)).toBe(true)
     expect(data).toHaveLength(3)
   })
-}) 
+})
