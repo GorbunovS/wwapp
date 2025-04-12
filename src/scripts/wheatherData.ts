@@ -1,12 +1,12 @@
 const API_KEY = 'f69f83d93f2bdce6419d2bf34b0f7934'
 
-interface SimpleForecast {
+export interface SimpleForecast {
   date: string
   temp: number
   description: string
 }
 
-interface CityWeather {
+export interface CityWeather {
   id: number
   name: string
   nameEn: string

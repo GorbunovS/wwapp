@@ -15,4 +15,12 @@ export default {
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  testMatch: ['**/__tests__/**/*.test.(ts|tsx)'],
+  collectCoverageFrom: [
+    'src/**/*.{ts,tsx}',
+    '!src/setupTests.ts',
+    '!src/vite-env.d.ts',
+    '!src/**/*.d.ts',
+  ],
 }
