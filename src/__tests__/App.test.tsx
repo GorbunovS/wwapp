@@ -6,13 +6,15 @@ import CityPageDetail from '../CityPageDetail'
 import { getWeatherCondition, getMarkStyleURL } from '../scripts/weather'
 import { getForecastData, fetchSimpleWeatherForecast } from '../scripts/wheatherData'
 import type { CityWeather } from '../scripts/wheatherData'
+// import MapComponent from '../MapLayer'
 
-// Mock
+// Mock the MapLayer component
 jest.mock('../MapLayer', () => ({
-  MapLayer: jest.fn(() => null),
+  __esModule: true,
+  default: jest.fn(() => null),
 }))
 
-// Mock
+// Mock weather data
 const mockWeatherData: CityWeather[] = [
   {
     id: 1,
@@ -31,25 +33,26 @@ const mockWeatherData: CityWeather[] = [
   },
 ]
 
-jest.mock('../scripts/wheatherData', () => ({
-  getForecastData: jest.fn().mockResolvedValue([
-    {
-      temp: 20,
-      description: 'Ясно',
-      time: '12:00',
-      date: '1 января',
-    },
-  ]),
-  fetchSimpleWeatherForecast: jest.fn().mockResolvedValue(mockWeatherData),
-}))
-
 const mockForecastData = [
-  mockWeatherData,
-  { ...mockWeatherData, time: '15:00' },
-  { ...mockWeatherData, time: '18:00' },
+  {
+    temp: 20,
+    description: 'Ясно',
+    time: '12:00',
+    date: '1 января',
+  },
 ]
 
-describe('App Component', () => {
+// Mock weather data functions
+jest.mock('../scripts/wheatherData', () => ({
+  getForecastData: () => Promise.resolve(mockForecastData),
+  fetchSimpleWeatherForecast: () => Promise.resolve(mockWeatherData),
+}))
+
+describe('App', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
+
   it('renders without crashing', () => {
     render(
       <BrowserRouter>
