@@ -31,6 +31,7 @@ interface SimpleForecast {
 interface CityWeather {
   id: number
   name: string
+  nameEn: string
   position: [number, number]
   currentTemp: string
   currentDesc: string
@@ -48,7 +49,7 @@ const MapComponent: FC = () => {
     const loadWeatherData = async () => {
       try {
         setLoading(true)
-        const data = await fetchSimpleWeatherForecast('f69f83d93f2bdce6419d2bf34b0f7934')
+        const data = await fetchSimpleWeatherForecast()
         setCards(data)
       } catch {
         setError('не удалось загрузить погоду')
@@ -67,8 +68,9 @@ const MapComponent: FC = () => {
     <div style={{ height: '100vh', width: '100%', position: 'relative' }}>
       <MapContainer center={center} zoom={6} style={{ height: '100%', width: '100%' }}>
         <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://api.maptiler.com/maps/outdoor-v2/256/{z}/{x}/{y}.png?key=g7cM1vMR1viO2I3YInIA"
+          attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>'
+          maxZoom={20}
         />
 
         {cards.map((card) => {
@@ -86,6 +88,7 @@ const MapComponent: FC = () => {
               <Popup maxHeight={1000} maxWidth={1000} closeButton={false}>
                 <CardComponent
                   name={card.name}
+                  nameEn={card.nameEn}
                   description={card.currentDesc}
                   temperature={card.currentTemp}
                 />
