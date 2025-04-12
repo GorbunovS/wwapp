@@ -52,3 +52,7 @@ export default tseslint.config({
   },
 })
 ```
+
+## Тестирование Husky
+
+Этот текст добавлен для проверки работы Husky pre-commit хуков.

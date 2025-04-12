@@ -1,9 +1,9 @@
-import { jest } from '@jest/globals';
+import { jest } from '@jest/globals'
 
 // Мокаем глобальный fetch
-global.fetch = jest.fn();
+global.fetch = jest.fn()
 
 // Очистка моков после каждого теста
 afterEach(() => {
-  jest.clearAllMocks();
-}); 
+  jest.clearAllMocks()
+})
