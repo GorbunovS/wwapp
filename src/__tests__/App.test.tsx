@@ -5,7 +5,7 @@ import Header from '../Header'
 import CityPageDetail from '../CityPageDetail'
 import { getWeatherCondition, getMarkStyleURL } from '../scripts/weather'
 import { getForecastData, fetchSimpleWeatherForecast } from '../scripts/wheatherData'
-import type { CityWeather } from '../scripts/wheatherData'
+
 // import MapComponent from '../MapLayer'
 
 // Mock the MapLayer component
@@ -13,25 +13,6 @@ jest.mock('../MapLayer', () => ({
   __esModule: true,
   default: jest.fn(() => null),
 }))
-
-// Mock weather data
-const mockWeatherData: CityWeather[] = [
-  {
-    id: 1,
-    name: 'Москва',
-    nameEn: 'moscow',
-    position: [55.7558, 37.6173],
-    currentTemp: '+20°C',
-    currentDesc: 'Ясно',
-    forecast: [
-      {
-        date: '01.01.2024',
-        temp: 20,
-        description: 'Ясно',
-      },
-    ],
-  },
-]
 
 const mockForecastData = [
   {
@@ -44,8 +25,8 @@ const mockForecastData = [
 
 // Mock weather data functions
 jest.mock('../scripts/wheatherData', () => ({
-  getForecastData: () => Promise.resolve(mockForecastData),
-  fetchSimpleWeatherForecast: () => Promise.resolve(mockWeatherData),
+  getForecastData: jest.fn(),
+  fetchSimpleWeatherForecast: jest.fn(),
 }))
 
 describe('App', () => {
@@ -109,7 +90,7 @@ describe('Header Component', () => {
 
 describe('CityPageDetail Component', () => {
   beforeEach(() => {
-    getForecastData.mockResolvedValue(mockForecastData)
+    ;(getForecastData as jest.Mock).mockResolvedValue(mockForecastData)
   })
 
   test('renders loading state', () => {
@@ -162,15 +143,21 @@ describe('Weather Utils', () => {
 
 describe('Weather API', () => {
   beforeEach(() => {
-    fetchSimpleWeatherForecast.mockResolvedValue([
+    ;(fetchSimpleWeatherForecast as jest.Mock).mockResolvedValue([
       {
         id: 1,
         name: 'Москва',
         nameEn: 'moscow',
         position: [55.7558, 37.6173],
         currentTemp: '+20°C',
-        currentDesc: 'ясно',
-        forecast: mockForecastData,
+        currentDesc: 'Ясно',
+        forecast: [
+          {
+            date: '01.01.2024',
+            temp: 20,
+            description: 'Ясно',
+          },
+        ],
       },
     ])
   })
