@@ -2,6 +2,12 @@ import '@testing-library/jest-dom'
 import { cleanup } from '@testing-library/react'
 import matchers from '@testing-library/jest-dom/matchers'
 
+declare global {
+  interface Window {
+    localStorage: Storage
+  }
+}
+
 expect.extend(matchers)
 
 afterEach(() => {
@@ -31,4 +37,4 @@ const localStorageMock = {
   key: jest.fn(),
 } as Storage
 
-global.localStorage = localStorageMock
+window.localStorage = localStorageMock
