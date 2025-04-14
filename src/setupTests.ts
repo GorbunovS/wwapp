@@ -28,13 +28,6 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 })
 
-// Add TextEncoder and TextDecoder polyfills
-if (typeof TextEncoder === 'undefined') {
-  import { TextEncoder, TextDecoder } from 'util'
-  global.TextEncoder = TextEncoder
-  global.TextDecoder = TextDecoder
-}
-
 // Mock localStorage
 const localStorageMock = (() => {
   let store: Record<string, string> = {}
