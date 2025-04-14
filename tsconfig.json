@@ -6,7 +6,7 @@
     },
     "esModuleInterop": true,
     "jsx": "react-jsx",
-    "types": ["jest"],
+    "types": ["jest", "node"],
     "target": "ESNext",
     "module": "ESNext",
     "strict": true,
