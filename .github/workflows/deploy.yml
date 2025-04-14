@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: write  # необходимо для деплоя через GH Pages
+  contents: write  
 
 jobs:
   build-and-deploy:
@@ -36,4 +36,4 @@ jobs:
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist
