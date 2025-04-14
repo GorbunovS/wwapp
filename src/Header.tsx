@@ -18,13 +18,14 @@ const Header: FC = () => {
 
   const handleSearch = (cityName: string) => {
     const city = EUROPEAN_CAPITALS.find(
-      city => city.name.toLowerCase().includes(cityName.toLowerCase()) ||
-             city.nameEn.toLowerCase().includes(cityName.toLowerCase())
+      (city) =>
+        city.name.toLowerCase().includes(cityName.toLowerCase()) ||
+        city.nameEn.toLowerCase().includes(cityName.toLowerCase())
     )
 
     if (city) {
       if (!searchHistory.includes(city.name)) {
-        setSearchHistory(prev => [city.name, ...prev].slice(0, 5))
+        setSearchHistory((prev) => [city.name, ...prev].slice(0, 5))
       }
       setSearchTerm('')
       setShowHistory(false)
@@ -36,7 +37,7 @@ const Header: FC = () => {
     <header className="header">
       <div className="header-container">
         <Link to="" replace className="logo">
-          <img src="./src/assets/logo.svg" alt="Логотип" />
+          <img src="./src/assets/logo.png" alt="Логотип" />
         </Link>
 
         <div className="search-container">
@@ -55,11 +56,7 @@ const Header: FC = () => {
             <div className="search-history">
               <h4>История поиска:</h4>
               {searchHistory.map((city, index) => (
-                <div
-                  key={index}
-                  className="history-item"
-                  onClick={() => handleSearch(city)}
-                >
+                <div key={index} className="history-item" onClick={() => handleSearch(city)}>
                   {city}
                 </div>
               ))}
@@ -67,9 +64,10 @@ const Header: FC = () => {
           )}
           {showHistory && searchTerm !== '' && (
             <div className="search-suggestions">
-              {EUROPEAN_CAPITALS.filter(city =>
-                city.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                city.nameEn.toLowerCase().includes(searchTerm.toLowerCase())
+              {EUROPEAN_CAPITALS.filter(
+                (city) =>
+                  city.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                  city.nameEn.toLowerCase().includes(searchTerm.toLowerCase())
               ).map((city, index) => (
                 <div
                   key={index}
@@ -86,7 +84,9 @@ const Header: FC = () => {
         <nav className="nav">
           <ul className="nav-list">
             <li>
-              <Link to="" replace>Погодная карта</Link>
+              <Link to="" replace>
+                Погодная карта
+              </Link>
             </li>
           </ul>
         </nav>
