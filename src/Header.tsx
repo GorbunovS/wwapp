@@ -37,7 +37,7 @@ const Header: FC = () => {
     <header className="header">
       <div className="header-container">
         <Link to="" replace className="logo">
-          <img src="./src/assets/logo.png" alt="Логотип" />
+          <img src="./public/images/icons/logo.svg" alt="Логотип" />
         </Link>
 
         <div className="search-container">
