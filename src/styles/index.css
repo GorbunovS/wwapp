@@ -66,20 +66,18 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
-/* Прозрачный фон попапа */
+
 .leaflet-popup-content-wrapper {
   background: transparent !important;
   box-shadow: none !important;
   border-radius: 0 !important;
 }
 
-/* Убираем белую подложку контента */
 .leaflet-popup-content {
   margin: 0 !important;
   background: transparent !important;
 }
 
-/* Убираем стрелку у попапа */
 .leaflet-popup-tip {
   display: none !important;
 }

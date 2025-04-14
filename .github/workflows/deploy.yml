@@ -1,0 +1,39 @@
+name: Деплой на GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write  # необходимо для деплоя через GH Pages
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Чекаут кода
+        uses: actions/checkout@v4
+
+      - name: Установка Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Установка зависимостей
+        run: npm install
+
+      - name: Запуск тестов
+        run: npm test
+        env:
+          CI: true
+
+      - name: Сборка приложения
+        run: npm run build
+
+      - name: Деплой на GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
