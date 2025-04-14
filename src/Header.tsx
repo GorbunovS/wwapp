@@ -2,6 +2,7 @@ import { FC, useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../src/styles/Header.css'
 import { EUROPEAN_CAPITALS } from './scripts/wheatherData'
+import Logo from '../public/images/icons/logo.svg' // Импортируем SVG
 
 const Header: FC = () => {
   const navigate = useNavigate()
@@ -37,7 +38,7 @@ const Header: FC = () => {
     <header className="header">
       <div className="header-container">
         <Link to="" replace className="logo">
-          <img src="./public/images/icons/logo.svg" alt="Логотип" />
+          <img src={Logo} alt="Логотип" /> {/* Используем импортированный SVG */}
         </Link>
 
         <div className="search-container">
