@@ -28,13 +28,37 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 })
 
-const localStorageMock = {
-  length: 0,
-  clear: jest.fn(),
-  getItem: jest.fn(),
-  setItem: jest.fn(),
-  removeItem: jest.fn(),
-  key: jest.fn(),
-} as Storage
+// Add TextEncoder and TextDecoder polyfills
+if (typeof TextEncoder === 'undefined') {
+  import { TextEncoder, TextDecoder } from 'util'
+  global.TextEncoder = TextEncoder
+  global.TextDecoder = TextDecoder
+}
 
-window.localStorage = localStorageMock
+// Mock localStorage
+const localStorageMock = (() => {
+  let store: Record<string, string> = {}
+
+  return {
+    getItem: jest.fn((key: string) => store[key] || null),
+    setItem: jest.fn((key: string, value: string) => {
+      store[key] = value.toString()
+    }),
+    removeItem: jest.fn((key: string) => {
+      delete store[key]
+    }),
+    clear: jest.fn(() => {
+      store = {}
+    }),
+    length: 0,
+    key: jest.fn((index: number) => {
+      const keys = Object.keys(store)
+      return index >= keys.length ? null : keys[index]
+    }),
+  }
+})()
+
+Object.defineProperty(window, 'localStorage', {
+  value: localStorageMock,
+  writable: true,
+})
