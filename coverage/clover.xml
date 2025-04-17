@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1744479770039" clover="3.2.0">
+  <project timestamp="1744479770040" name="All files">
+    <metrics statements="51" coveredstatements="9" conditionals="13" coveredconditionals="0" methods="11" coveredmethods="0" elements="75" coveredelements="9" complexity="0" loc="51" ncloc="51" packages="1" files="1" classes="1"/>
+    <file name="wheatherData.ts" path="C:\Users\79939\Desktop\wwapp\wwapp\src\scripts\wheatherData.ts">
+      <metrics statements="51" coveredstatements="9" conditionals="13" coveredconditionals="0" methods="11" coveredmethods="0"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="29" count="1" type="stmt"/>
+      <line num="37" count="1" type="stmt"/>
+      <line num="38" count="0" type="stmt"/>
+      <line num="39" count="0" type="stmt"/>
+      <line num="42" count="0" type="cond" truecount="0" falsecount="1"/>
+      <line num="43" count="0" type="stmt"/>
+      <line num="46" count="0" type="stmt"/>
+      <line num="54" count="1" type="stmt"/>
+      <line num="55" count="0" type="cond" truecount="0" falsecount="2"/>
+      <line num="58" count="1" type="cond" truecount="0" falsecount="1"/>
+      <line num="59" count="0" type="stmt"/>
+      <line num="60" count="0" type="stmt"/>
+      <line num="62" count="0" type="stmt"/>
+      <line num="67" count="0" type="stmt"/>
+      <line num="72" count="0" type="stmt"/>
+      <line num="75" count="1" type="cond" truecount="0" falsecount="1"/>
+      <line num="76" count="0" type="stmt"/>
+      <line num="77" count="0" type="stmt"/>
+      <line num="79" count="0" type="stmt"/>
+      <line num="80" count="0" type="stmt"/>
+      <line num="81" count="0" type="cond" truecount="0" falsecount="3"/>
+      <line num="82" count="0" type="stmt"/>
+      <line num="83" count="0" type="stmt"/>
+      <line num="91" count="0" type="stmt"/>
+      <line num="94" count="1" type="stmt"/>
+      <line num="98" count="0" type="stmt"/>
+      <line num="99" count="0" type="stmt"/>
+      <line num="100" count="0" type="stmt"/>
+      <line num="102" count="0" type="stmt"/>
+      <line num="112" count="0" type="stmt"/>
+      <line num="116" count="1" type="stmt"/>
+      <line num="117" count="0" type="stmt"/>
+      <line num="118" count="0" type="stmt"/>
+      <line num="120" count="0" type="stmt"/>
+      <line num="122" count="0" type="stmt"/>
+      <line num="123" count="0" type="stmt"/>
+      <line num="124" count="0" type="stmt"/>
+      <line num="126" count="0" type="stmt"/>
+      <line num="138" count="0" type="stmt"/>
+      <line num="140" count="0" type="stmt"/>
+      <line num="144" count="1" type="stmt"/>
+      <line num="145" count="0" type="stmt"/>
+      <line num="146" count="0" type="stmt"/>
+      <line num="147" count="0" type="cond" truecount="0" falsecount="1"/>
+      <line num="148" count="0" type="stmt"/>
+      <line num="151" count="0" type="stmt"/>
+      <line num="152" count="0" type="stmt"/>
+      <line num="154" count="0" type="stmt"/>
+      <line num="161" count="0" type="stmt"/>
+      <line num="162" count="0" type="stmt"/>
+    </file>
+  </project>
+</coverage>

@@ -1,54 +1,72 @@
-# React + TypeScript + Vite
+# WORLD WEATHER APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Интерактивная карта погоды с прогнозом для крупных европейских городов.
 
-Currently, two official plugins are available:
+## ⚡️ Деплой на Gh-Action
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+https://gorbunovs.github.io/wwapp/
 
-## Expanding the ESLint configuration
+## 🌟 Особенности
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- 🗺️ Интерактивная карта с погодными маркерами
+- 🌡️ Детальный прогноз погоды для каждого города
+- 🔍 Умный поиск с историей запросов
+- 🌍 Поддержка нескольких городов
+- ⏰ Отображение местного времени
+- 📱 Адаптивный дизайн
+- 🎨 Современный UI
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 🚀 Технологии
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- React 18
+- TypeScript
+- React Router v6
+- Leaflet для карт
+- OpenWeatherMap API
+- MapTiler API
+- LocalStorage для сохранения пользовательских данных
+- CSS
+- ESLint + TypeScript ESLint
+- Jest для тестирования
+- Prettier для форматирования кода
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📦 Установка
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+1. Клонируйте репозиторий:
+   \`\`\`bash
+   git clone https://github.com/yourusername/wwapp.git
+   \`\`\`
+
+2. Установите зависимости:
+   \`\`\`bash
+   cd weather-map
+   npm install
+   \`\`\`
+
+3. Запустите приложение:
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+
+## 🔧 Скрипты
+
+- \`npm run dev\` - Запуск в режиме разработки
+- \`npm run build\` - Сборка проекта
+- \`npm run test\` - Запуск тестов
+- \`npm run lint\` - Проверка кода линтером
+- \`npm run preview\` - Предпросмотр собранного проекта
+
+## 📱 Роуты
+
+- \`/\` - Главная страница с картой
+- \`/city/:cityName\` - Детальный прогноз погоды для города
+
+## 🧪 Тестирование
+
+- Проверки соответствия типов
+
+### Линтинг
+
+- ESLint с TypeScript конфигурацией
+- Проверка типов
+- Правила для React и хуков
